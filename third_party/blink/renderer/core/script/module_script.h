@@ -72,7 +72,8 @@ class CORE_EXPORT ModuleScript : public Script {
       ExecuteScriptPolicy =
           ExecuteScriptPolicy::kDoNotExecuteScriptWhenScriptsDisabled,
       V8ScriptRunner::RethrowErrorsOption =
-          V8ScriptRunner::RethrowErrorsOption::DoNotRethrow()) override;
+          V8ScriptRunner::RethrowErrorsOption::DoNotRethrow(),
+      bool is_deferred_evaluation = false) override;
 
   Modulator* SettingsObject() const { return settings_object_.Get(); }
 

@@ -101,7 +101,8 @@ class CORE_EXPORT ClassicScript final : public Script {
       ExecuteScriptPolicy =
           ExecuteScriptPolicy::kDoNotExecuteScriptWhenScriptsDisabled,
       V8ScriptRunner::RethrowErrorsOption =
-          V8ScriptRunner::RethrowErrorsOption::DoNotRethrow()) override;
+          V8ScriptRunner::RethrowErrorsOption::DoNotRethrow(),
+      bool is_deferred_evaluation = false) override;
   ScriptEvaluationResult RunScriptInIsolatedWorldAndReturnValue(
       LocalDOMWindow*,
       int32_t world_id);

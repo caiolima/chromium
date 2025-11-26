@@ -137,7 +137,8 @@ void ModuleScript::Trace(Visitor* visitor) const {
 ScriptEvaluationResult ModuleScript::RunScriptOnScriptStateAndReturnValue(
     ScriptState* script_state,
     ExecuteScriptPolicy execute_script_policy,
-    V8ScriptRunner::RethrowErrorsOption rethrow_errors) {
+    V8ScriptRunner::RethrowErrorsOption rethrow_errors,
+    bool is_deferred_evaluation) {
   DCHECK_EQ(script_state, SettingsObject()->GetScriptState());
   DCHECK(script_state);
   probe::EvaluateScriptBlock probe_scope(*script_state, BaseUrl(),
@@ -145,7 +146,7 @@ ScriptEvaluationResult ModuleScript::RunScriptOnScriptStateAndReturnValue(
 
   DCHECK_EQ(execute_script_policy,
             ExecuteScriptPolicy::kDoNotExecuteScriptWhenScriptsDisabled);
-  return V8ScriptRunner::EvaluateModule(this, std::move(rethrow_errors));
+  return V8ScriptRunner::EvaluateModule(this, std::move(rethrow_errors), is_deferred_evaluation);
 }
 
 std::ostream& operator<<(std::ostream& stream,
