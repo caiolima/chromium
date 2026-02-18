@@ -873,7 +873,7 @@ class ModuleEvaluationRejectionCallback final
 ScriptEvaluationResult V8ScriptRunner::EvaluateModule(
     ModuleScript* module_script,
     RethrowErrorsOption rethrow_errors,
-    bool is_deferred_evaluation) {
+    v8::ModuleImportPhase phase) {
   // <spec step="1">If rethrow errors is not given, let it be false.</spec>
 
   // <spec step="2">Let settings be the settings object of script.</spec>
@@ -942,8 +942,10 @@ ScriptEvaluationResult V8ScriptRunner::EvaluateModule(
     // only after module error handling to ensure proper timing with and
     // without top-level await.
 
-    v8::MaybeLocal<v8::Value> maybe_result = !is_deferred_evaluation ?
-        record->Evaluate(script_state->GetContext()) : record->DeferredEvaluate(script_state->GetContext());
+    v8::MaybeLocal<v8::Value> maybe_result =
+        (phase == v8::ModuleImportPhase::kDefer)
+            ? record->EvaluateForImportDefer(script_state->GetContext())
+            : record->Evaluate(script_state->GetContext());
 
     if (!try_catch.CanContinue())
       return ScriptEvaluationResult::FromModuleAborted();

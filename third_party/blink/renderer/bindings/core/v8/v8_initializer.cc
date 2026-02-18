@@ -749,10 +749,6 @@ v8::MaybeLocal<v8::Promise> HostImportModuleWithPhaseDynamically(
   v8::Isolate* isolate = v8::Isolate::GetCurrent();
   ScriptState* script_state = ScriptState::From(isolate, context);
 
-  if (import_phase == v8::ModuleImportPhase::kDefer) {
-    LOG(INFO) << "Called with phase: defer\n";
-  }
-
   Modulator* modulator = Modulator::From(script_state);
   if (!modulator) {
     // Inactive browsing context (detached frames) doesn't have a modulator.

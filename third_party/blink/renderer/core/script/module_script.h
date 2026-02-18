@@ -72,8 +72,15 @@ class CORE_EXPORT ModuleScript : public Script {
       ExecuteScriptPolicy =
           ExecuteScriptPolicy::kDoNotExecuteScriptWhenScriptsDisabled,
       V8ScriptRunner::RethrowErrorsOption =
-          V8ScriptRunner::RethrowErrorsOption::DoNotRethrow(),
-      bool is_deferred_evaluation = false) override;
+          V8ScriptRunner::RethrowErrorsOption::DoNotRethrow()) override;
+
+  // Evaluates the module with the given import phase. Used by dynamic import
+  // to support import.defer (kDefer phase) which calls V8's
+  // EvaluateForImportDefer instead of Evaluate.
+  [[nodiscard]] ScriptEvaluationResult EvaluateForImportPhase(
+      ScriptState*,
+      V8ScriptRunner::RethrowErrorsOption,
+      v8::ModuleImportPhase phase);
 
   Modulator* SettingsObject() const { return settings_object_.Get(); }
 

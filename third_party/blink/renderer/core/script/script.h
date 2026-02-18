@@ -55,8 +55,7 @@ class CORE_EXPORT Script : public GarbageCollected<Script> {
       ExecuteScriptPolicy =
           ExecuteScriptPolicy::kDoNotExecuteScriptWhenScriptsDisabled,
       V8ScriptRunner::RethrowErrorsOption =
-          V8ScriptRunner::RethrowErrorsOption::DoNotRethrow(),
-      bool is_deferred_evaluation = false) = 0;
+          V8ScriptRunner::RethrowErrorsOption::DoNotRethrow()) = 0;
   // On the main world of LocalDOMWindow:
   void RunScript(
       LocalDOMWindow*,

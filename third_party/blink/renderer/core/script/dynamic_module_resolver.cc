@@ -88,7 +88,8 @@ class ModuleResolutionSuccessCallback final : public ModuleResolutionCallback {
   void React(ScriptState* script_state, ScriptValue value) final {
     ScriptState::Scope scope(script_state);
     v8::Local<v8::Module> record = module_script_->V8Module();
-    v8::Local<v8::Value> module_namespace = ModuleRecord::V8Namespace(record, import_phase_);
+    v8::Local<v8::Value> module_namespace =
+        ModuleRecord::V8Namespace(record, import_phase_);
     promise_resolver_->Resolve(module_namespace);
   }
 
@@ -163,13 +164,9 @@ void DynamicImportTreeClient::NotifyModuleTreeLoadFinished(
 
   // <spec step="9">Otherwise, set promise to the result of running a module
   // script given result and true.</spec>
-  bool is_deferred_evaluation = import_phase_ == v8::ModuleImportPhase::kDefer;
-  ScriptEvaluationResult result =
-      module_script->RunScriptOnScriptStateAndReturnValue(
-          script_state,
-          ExecuteScriptPolicy::kDoNotExecuteScriptWhenScriptsDisabled,
-          V8ScriptRunner::RethrowErrorsOption::Rethrow(String()),
-          is_deferred_evaluation);
+  ScriptEvaluationResult result = module_script->EvaluateForImportPhase(
+      script_state, V8ScriptRunner::RethrowErrorsOption::Rethrow(String()),
+      import_phase_);
 
   switch (result.GetResultType()) {
     case ScriptEvaluationResult::ResultType::kException:

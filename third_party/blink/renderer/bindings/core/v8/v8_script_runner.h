@@ -140,9 +140,10 @@ class CORE_EXPORT V8ScriptRunner final {
   // Callers must enter a v8::HandleScope before calling.
   // See the class comments of RethrowErrorsOption and ScriptEvaluationResult
   // for exception handling and return value semantics.
-  static ScriptEvaluationResult EvaluateModule(ModuleScript*,
-                                               RethrowErrorsOption,
-                                               bool is_deferred_evaluation = false);
+  static ScriptEvaluationResult EvaluateModule(
+      ModuleScript*,
+      RethrowErrorsOption,
+      v8::ModuleImportPhase phase = v8::ModuleImportPhase::kEvaluation);
 
   // Only to be used from ModuleRecord::ReportException().
   static void ReportExceptionForModule(v8::Isolate*,

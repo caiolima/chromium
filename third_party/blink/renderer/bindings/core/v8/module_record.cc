@@ -186,7 +186,9 @@ Vector<ModuleRequest> ModuleRecord::ModuleRequests(
   return requests;
 }
 
-v8::Local<v8::Value> ModuleRecord::V8Namespace(v8::Local<v8::Module> record, v8::ModuleImportPhase import_phase) {
+v8::Local<v8::Value> ModuleRecord::V8Namespace(
+    v8::Local<v8::Module> record,
+    v8::ModuleImportPhase import_phase) {
   DCHECK(!record.IsEmpty());
   return record->GetModuleNamespace(import_phase);
 }

@@ -215,8 +215,7 @@ v8::ScriptOrigin ClassicScript::CreateScriptOrigin(v8::Isolate* isolate) const {
 ScriptEvaluationResult ClassicScript::RunScriptOnScriptStateAndReturnValue(
     ScriptState* script_state,
     ExecuteScriptPolicy policy,
-    V8ScriptRunner::RethrowErrorsOption rethrow_errors,
-    bool is_deferred_evaluation) {
+    V8ScriptRunner::RethrowErrorsOption rethrow_errors) {
   if (!script_state) {
     return ScriptEvaluationResult::FromClassicNotRun();
   }
