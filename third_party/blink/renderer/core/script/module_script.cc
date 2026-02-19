@@ -150,6 +150,7 @@ ScriptEvaluationResult ModuleScript::RunScriptOnScriptStateAndReturnValue(
 
 ScriptEvaluationResult ModuleScript::EvaluateForImportPhase(
     ScriptState* script_state,
+    ExecuteScriptPolicy execute_script_policy,
     V8ScriptRunner::RethrowErrorsOption rethrow_errors,
     v8::ModuleImportPhase phase) {
   DCHECK_EQ(script_state, SettingsObject()->GetScriptState());
@@ -157,6 +158,8 @@ ScriptEvaluationResult ModuleScript::EvaluateForImportPhase(
   probe::EvaluateScriptBlock probe_scope(*script_state, BaseUrl(),
                                          /*module=*/true, /*sanitize=*/false);
 
+  DCHECK_EQ(execute_script_policy,
+            ExecuteScriptPolicy::kDoNotExecuteScriptWhenScriptsDisabled);
   return V8ScriptRunner::EvaluateModule(this, std::move(rethrow_errors), phase);
 }
 
