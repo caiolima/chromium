@@ -79,7 +79,6 @@ class CORE_EXPORT ModuleScript : public Script {
   // EvaluateForImportDefer instead of Evaluate.
   [[nodiscard]] ScriptEvaluationResult EvaluateForImportPhase(
       ScriptState*,
-      ExecuteScriptPolicy,
       V8ScriptRunner::RethrowErrorsOption,
       v8::ModuleImportPhase phase);
 

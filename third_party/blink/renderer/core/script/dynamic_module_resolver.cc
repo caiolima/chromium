@@ -166,7 +166,6 @@ void DynamicImportTreeClient::NotifyModuleTreeLoadFinished(
   // script given result and true.</spec>
   ScriptEvaluationResult result = module_script->EvaluateForImportPhase(
       script_state,
-      ExecuteScriptPolicy::kDoNotExecuteScriptWhenScriptsDisabled,
       V8ScriptRunner::RethrowErrorsOption::Rethrow(String()),
       import_phase_);
 
