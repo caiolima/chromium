@@ -1784,6 +1784,24 @@
     "expires": "Apr 4, 2026"
   },
   {
+    "prefix": "javascript-defer-phase-imports",
+    "owners": [
+      "caiolima@igalia.com"
+    ],
+    "platforms": [
+      "Linux",
+      "Mac",
+      "Win"
+    ],
+    "bases": [
+      "wpt_internal/js/import-defer/basic-deferred-evaluation.html"
+    ],
+    "args": [
+      "--enable-features=JavaScriptDeferPhaseImports"
+    ],
+    "expires": "Apr 4, 2027"
+  },
+  {
     "prefix": "js-shared-memory",
     "platforms": [
       "Linux",
