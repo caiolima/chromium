@@ -1794,8 +1794,8 @@
       "Win"
     ],
     "bases": [
-      "wpt_internal/js/import-defer/basic-deferred-evaluation.html",
-      "wpt_internal/js/import-defer/tla-dependency-deferred-evaluation.html"
+      "external/wpt/html/semantics/scripting-1/the-script-element/module/dynamic-import/basic-deferred-evaluation.tentative.html",
+      "external/wpt/html/semantics/scripting-1/the-script-element/module/dynamic-import/tla-dependency-deferred-evaluation.tentative.html"
     ],
     "args": [
       "--enable-features=JavaScriptDeferPhaseImports"
