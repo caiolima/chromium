@@ -138,13 +138,15 @@ ScriptEvaluationResult ModuleScript::RunScriptOnScriptStateAndReturnValue(
     ScriptState* script_state,
     ExecuteScriptPolicy execute_script_policy,
     V8ScriptRunner::RethrowErrorsOption rethrow_errors) {
-  DCHECK_EQ(execute_script_policy,
-            ExecuteScriptPolicy::kDoNotExecuteScriptWhenScriptsDisabled);
-  return EvaluateForImportPhase(script_state, std::move(rethrow_errors),
-                                v8::ModuleImportPhase::kEvaluation);
+  CHECK_EQ(execute_script_policy,
+           ExecuteScriptPolicy::kDoNotExecuteScriptWhenScriptsDisabled);
+  return RunScriptOnScriptStateAndReturnValueWithImportPhase(
+      script_state, std::move(rethrow_errors),
+      v8::ModuleImportPhase::kEvaluation);
 }
 
-ScriptEvaluationResult ModuleScript::EvaluateForImportPhase(
+ScriptEvaluationResult
+ModuleScript::RunScriptOnScriptStateAndReturnValueWithImportPhase(
     ScriptState* script_state,
     V8ScriptRunner::RethrowErrorsOption rethrow_errors,
     v8::ModuleImportPhase phase) {

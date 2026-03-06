@@ -77,7 +77,8 @@ class CORE_EXPORT ModuleScript : public Script {
   // Evaluates the module with the given import phase. Used by dynamic import
   // to support import.defer (kDefer phase) which calls V8's
   // EvaluateForImportDefer instead of Evaluate.
-  [[nodiscard]] ScriptEvaluationResult EvaluateForImportPhase(
+  [[nodiscard]] ScriptEvaluationResult
+  RunScriptOnScriptStateAndReturnValueWithImportPhase(
       ScriptState*,
       V8ScriptRunner::RethrowErrorsOption,
       v8::ModuleImportPhase phase);
