@@ -24,7 +24,7 @@
 #include "third_party/blink/renderer/platform/bindings/v8_per_context_data.h"
 #include "third_party/blink/renderer/platform/heap/collection_support/heap_deque.h"
 #include "third_party/blink/renderer/platform/testing/task_environment.h"
-#include "v8-callbacks.h"
+#include "v8/include/v8-callbacks.h"
 #include "v8/include/v8.h"
 
 namespace blink {
