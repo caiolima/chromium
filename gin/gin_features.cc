@@ -183,6 +183,9 @@ BASE_FEATURE(kV8IgnitionElideRedundantTdzChecks,
 // Enables the RegExp modifiers proposal.
 BASE_FEATURE(kJavaScriptRegExpModifiers, kFeatureDefaultStateControlledByV8);
 
+// Enables the deferred evaluation phase for imports.
+BASE_FEATURE(kJavaScriptDeferPhaseImports, kFeatureDefaultStateControlledByV8);
+
 // Enables the `with` syntax for the Import Attributes proposal.
 BASE_FEATURE(kJavaScriptImportAttributes, kFeatureDefaultStateControlledByV8);
 

@@ -3372,9 +3372,6 @@
       origin_trial_feature_name: "JavaScriptCompileHintsPerFunctionMagic",
     },
     {
-      name: "JavaScriptDeferPhaseImports",
-    },
-    {
       name: "JavaScriptSourcePhaseImports",
     },
     {

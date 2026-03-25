@@ -509,6 +509,8 @@ void SetFeatureFlags() {
                          "--no-use-original-message-for-stack-trace");
 
   // JavaScript language features.
+  SetV8FlagsIfOverridden(features::kJavaScriptDeferPhaseImports,
+                         "--js-defer-import-eval", "--no-js-defer-import-eval");
   SetV8FlagsIfOverridden(features::kJavaScriptRegExpModifiers,
                          "--js-regexp-modifiers", "--no-js-regexp-modifiers");
   SetV8FlagsIfOverridden(features::kJavaScriptImportAttributes,

@@ -167,10 +167,6 @@ RenderProcessImpl::RenderProcessImpl()
                           "--experimental-wasm-wasmfx",
                           "--no-experimental-wasm-wasmfx");
 
-    SetV8FlagIfOverridden(blink::features::kJavaScriptDeferPhaseImports,
-                          "--js-defer-import-eval",
-                          "--no-js-defer-import-eval");
-
     SetV8FlagIfOverridden(blink::features::kJavaScriptSourcePhaseImports,
                           "--js-source-phase-imports",
                           "--no-js-source-phase-imports");
